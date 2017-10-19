@@ -13,8 +13,11 @@ Array.prototype.myForEach = function (callback,thisArg) {
     if (typeof callback !== "function"){
         throw new TypeError(callback + "is not a function");
     }
-    if (Object.prototype.hasOwnProperty.call(this,i)){
-        callback(this[i],i,this);
+    for (var i = 0;i < this.length;i++){
+        //判断数组值是否拥有一个命名为 hasOwnProperty 的属性，返回true/false
+        if (Object.prototype.hasOwnProperty.call(this,i)){
+            callback(this[i],i,this);
+        }
     }
 }
 
@@ -23,4 +26,3 @@ array.myForEach(function (value,index,arr) {
     console.log(index);
     console.log(arr);
 })
-
